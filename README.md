@@ -11,24 +11,9 @@ Understanding an unfamiliar open-source project can take time. Stackread generat
 
 ---
 
-## Architecture
+## Screenshot
 
-```
-┌─────────────┐     ┌─────────────────────┐     ┌──────────────┐
-│   React UI  │────▶│   Express REST API   │────▶│  Redis Cache │
-│   (Vite)    │     │                     │     │  (Upstash)   │
-└─────────────┘     └──────┬──────────────┘     └──────────────┘
-                           │
-                    ┌──────┴──────┐
-                    │             │
-              ┌─────▼─────┐ ┌────▼──────┐
-              │ GitHub API │ │ Gemini AI │
-              │ (metadata, │ │ (analysis │
-              │  README,   │ │  generation)
-              │  languages,│ └───────────┘
-              │  contents) │
-              └────────────┘
-```
+
 
 ## Features
 
@@ -49,7 +34,22 @@ Understanding an unfamiliar open-source project can take time. Stackread generat
 
 ## Architecture
 
-`React UI → Express API → GitHub API + Gemini API`
+````
+┌─────────────┐     ┌─────────────────────┐     ┌──────────────┐
+│   React UI  │────▶│   Express REST API   │────▶│  Redis Cache │
+│   (Vite)    │     │                     │     │  (Upstash)   │
+└─────────────┘     └──────┬──────────────┘     └──────────────┘
+                           │
+                    ┌──────┴──────┐
+                    │             │
+              ┌─────▼─────┐ ┌────▼──────┐
+              │ GitHub API │ │ Gemini AI │
+              │ (metadata, │ │ (analysis │
+              │  README,   │ │  generation)
+              │  languages,│ └───────────┘
+              │  contents) │
+              └────────────┘
+````
 
 Redis caches analysis results to reduce repeated API calls and response time.
 
